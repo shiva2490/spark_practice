@@ -1,0 +1,6 @@
+employee_id,name,salary,department
+101,Shiva,50000,IT
+101,S,555,IT
+102,,45000,IT
+103,Ram,,HR
+104,,,HR

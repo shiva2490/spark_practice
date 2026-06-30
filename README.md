@@ -49,7 +49,10 @@ Run these commands one by one in your VS Code terminal:
 
     pip install pyspark pandas
 
-
+### 8. Connect the Notebook to the Engine
+To run interactive Jupyter Notebooks (`.ipynb`) inside VS Code, the notebook interface needs a "bridge" to send code to our isolated Python engine. The `ipykernel` package acts as this bridge. We install it manually in the terminal to ensure VS Code doesn't accidentally use the computer's global Python installation.
+```bash
+pip install ipykernel
 
 
 
@@ -65,3 +68,8 @@ While a Pandas DataFrame exists in a single block of memory, a PySpark DataFrame
 PySpark does not execute code line-by-line.
 * **Transformations** (like `.filter()` or `.withColumn()`) are *lazy*. They do not process data; they only build an execution plan.
 * **Actions** (like `.show()` or `.write()`) trigger the engine. Spark reads the execution plan, optimizes it, and finally performs the calculations across the cluster.
+
+### 4. Code Formatting in PySpark
+Because PySpark commands are often chained together and can get very long (like building a `SparkSession`), we need ways to format code vertically across multiple lines for readability:
+* **Explicit Line Continuation (`\`):** Adding a backslash at the exact end of a line tells Python the command continues on the next line. (Must have no spaces after it).
+* **Implicit Line Continuation `()`:** Wrapping the entire right side of an expression in parentheses allows you to naturally break lines and indent without needing backslashes. This is the preferred, cleaner method.
